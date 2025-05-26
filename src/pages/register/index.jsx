@@ -4,6 +4,7 @@ import imageSingUp from "@/../public/singup-cuate.svg";
 import { Container } from "@/components/layout/container";
 import { Form } from "@/components/layout/form";
 import Link from "next/link";
+import { FaGoogle } from "react-icons/fa";
 
 export default function Register() {
   const inputs = [
@@ -29,6 +30,9 @@ export default function Register() {
             inputs={inputs}
             descBtn1="Fazer cadastro"
             descBtn2="Registrar com o Google"
+            urlBtn1="/login"
+            urlBtn2="/login"
+            icon={<FaGoogle />}
           />
           <Link href="/login" className={styles.linkLogin}>
             Já tem uma conta? Faça login

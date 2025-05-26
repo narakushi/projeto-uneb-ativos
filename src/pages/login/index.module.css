@@ -1,0 +1,27 @@
+.containerSingIn {
+  width: 100%;
+}
+
+.containerImg {
+  width: 50%;
+}
+
+.containerImg img {
+  max-width: 100%;
+}
+
+.containerFormSingIn {
+  width: 50%;
+}
+
+.linkSingIn {
+  display: block;
+  margin-top: 10rem;
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: var(--dark-blue);
+}
+
+.linkSingIn:hover {
+  text-decoration: underline;
+}

@@ -3,7 +3,15 @@ import { Input } from "../input";
 import { Title } from "../title";
 import styles from "./index.module.css";
 
-export const Form = ({ title, inputs, descBtn1, descBtn2 }) => {
+export const Form = ({
+  title,
+  inputs,
+  descBtn1,
+  descBtn2,
+  urlBtn1,
+  urlBtn2,
+  icon,
+}) => {
   return (
     <form action="" className={styles.containerForm}>
       <Title text={title} />
@@ -15,8 +23,8 @@ export const Form = ({ title, inputs, descBtn1, descBtn2 }) => {
       </div>
 
       <div className={styles.containerButtons}>
-        <Button text={descBtn1} url="/login" customClass="btnColor" />
-        <Button text={descBtn2} url="/login" />
+        <Button text={descBtn1} url={urlBtn1} customClass="btnColor" />
+        <Button text={descBtn2} url={urlBtn2} icon={icon} />
       </div>
     </form>
   );
