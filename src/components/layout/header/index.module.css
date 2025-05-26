@@ -1,0 +1,10 @@
+.header {
+  padding-top: 1rem;
+  margin: 0;
+  width: 100%;
+}
+
+.logoHeader img {
+  width: 8rem;
+  height: 8rem;
+}

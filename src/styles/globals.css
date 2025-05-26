@@ -24,5 +24,6 @@ html {
 html,
 body,
 #__next {
+  max-width: 100svw;
   height: 100svh;
 }
