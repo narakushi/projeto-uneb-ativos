@@ -1,0 +1,21 @@
+.btnStyle {
+  min-width: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1.6rem;
+  border: 0.2rem solid var(--blue-color);
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: var(--blue-color);
+  transition: all 0.3s ease-in;
+}
+
+.btnColor {
+  background: var(--blue-color);
+  color: var(--white-color);
+}
+
+.btnStyle:hover {
+  scale: 1.02;
+}
