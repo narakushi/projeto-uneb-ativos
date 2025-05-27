@@ -1,5 +1,6 @@
 .containerSingIn {
   width: 100%;
+  height: calc(100% - 73px);
 }
 
 .containerImg {
@@ -8,15 +9,19 @@
 
 .containerImg img {
   max-width: 100%;
+  height: calc(100% - 50px);
 }
 
 .containerFormSingIn {
   width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .linkSingIn {
   display: block;
-  margin-top: 10rem;
+  margin-top: 5rem;
   text-decoration: none;
   font-size: 1.4rem;
   color: var(--dark-blue);
