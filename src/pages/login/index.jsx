@@ -24,8 +24,8 @@ export default function Login() {
             inputs={inputs}
             descBtn1="Entrar"
             descBtn2="Faça login com Google"
-            urlBtn1="/cadastro-org"
-            urlBtn2="/cadastro-org"
+            urlBtn1="/registerOrg"
+            urlBtn2="/registerOrg"
             icon={<FaGoogle />}
           />
           <Link className={styles.linkSingIn} href="/register">

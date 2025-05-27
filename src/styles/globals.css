@@ -3,11 +3,15 @@
   --dark-gray: #21272a;
   --gray-color: #697077;
   --cool-gray-30: #c1c7cd;
+  --cool-gray-20: #c8cdd4;
   --cool-gray-10: #f2f4f8;
+  --cool-gray-35: #eceff4;
   --blue-color: #0f62fe;
   --white-color: #ffffff;
   --black-color: #000000;
   --dark-blue: #001d6c;
+  --cool-green-10: #00A62480
+  --cool-green-20: #00A624;
 }
 
 * {
