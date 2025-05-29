@@ -1,0 +1,13 @@
+.containerRegisterOrg {
+  height: 100%;
+}
+
+.containerRegisterOrg > div {
+  padding: 2rem;
+  flex-direction: column;
+  line-height: 1.5;
+}
+
+.containerRegisterOrg p {
+  font-size: 2rem;
+}

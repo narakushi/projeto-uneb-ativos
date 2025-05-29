@@ -1,0 +1,70 @@
+[
+  {
+    "label": "Título da necessidade ou desafio",
+    "type": "text",
+    "id": "form-req-titulo",
+    "htmlFor": "form-req-titulo"
+  },
+  {
+    "label": "Descrição detalhada da necessidade",
+    "name": "descricao",
+    "rows": "5",
+    "id": "form-req-descricao",
+    "htmlFor": "form-req-descricao"
+  },
+  {
+    "label": "Setor impactado internamente",
+    "options": [],
+    "id": "form-req-setor",
+    "htmlFor": "form-req-setor"
+  },
+  {
+    "label": "Tipo da solução buscada",
+    "options": [],
+    "id": "form-req-tipo-solucao",
+    "htmlFor": "form-req-tipo-solucao"
+  },
+  {
+    "label": "Outro tipo de solução",
+    "type": "text",
+    "id": "form-req-outro-solucao",
+    "htmlFor": "form-req-outro-solucao"
+  },
+  {
+    "label": "Tecnologias desejadas",
+    "options": [],
+    "id": "form-req-tecnologias",
+    "htmlFor": "form-req-tecnologias"
+  },
+  {
+    "label": "Resultados esperados",
+    "name": "resultados",
+    "rows": "5",
+    "id": "form-req-resultados",
+    "htmlFor": "form-req-resultados"
+  },
+  {
+    "label": "Urgência da necessidade",
+    "options": [],
+    "id": "form-req-urgencia",
+    "htmlFor": "form-req-urgencia"
+  },
+  {
+    "label": "Palavras-chave da necessidade",
+    "options": [],
+    "id": "form-req-palavras-chave",
+    "htmlFor": "form-req-palavras-chave"
+  },
+  {
+    "label": "Disposição do Investimento",
+    "options": [],
+    "id": "form-req-investimento",
+    "htmlFor": "form-req-investimento"
+  },
+  {
+    "label": "Status da Necessidade",
+    "options": [],
+    "id": "form-req-status",
+    "htmlFor": "form-req-status"
+  }
+]

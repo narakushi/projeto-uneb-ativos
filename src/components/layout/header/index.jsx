@@ -10,6 +10,7 @@ export function Header() {
       <Container>
         <Link href="/" className={styles.logoHeader}>
           <Image
+            priority
             src={logo}
             alt="Logo temporaria do site"
             width={100}

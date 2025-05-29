@@ -1,0 +1,208 @@
+[
+  {
+    "label": "Razão Social",
+    "type": "text",
+    "id": "razao-social",
+    "htmlFor": "razao-social"
+  },
+  {
+    "label": "Nome Fantasia",
+    "type": "text",
+    "id": "nome-fantasia",
+    "htmlFor": "nome-fantasia"
+  },
+  {
+    "label": "CNPJ/CPF",
+    "type": "text",
+    "id": "cnpj-cpf",
+    "htmlFor": "cnpj-cpf"
+  },
+  {
+    "label": "Tipo de organização",
+    "options": [
+      "Empresa demandante",
+      "Empresa ofertante",
+      "Startup",
+      "ICT (UNEB, IF BAIANO, FATEC, etc)",
+      "Governo Municipal",
+      "Governo Estadual",
+      "Governo Federal",
+      "Ambiente de Inovação (Espaço Colaborar, Incubadora, Aceleradora)",
+      "Entidade de Apoio (Sebrae, SENAI, Associações)",
+      "Investidor",
+      "Mentor"
+    ],
+    "id": "tipo-de-organizacao",
+    "htmlFor": "tipo-de-organizacao"
+  },
+  {
+    "label": "Setor Principal de Atuação",
+    "options": [
+      "Agroalimentar",
+      "Recursos Florestais",
+      "Recursos Minerais",
+      "TI e Automação",
+      "Comércio",
+      "Serviços",
+      "Indústria Geral",
+      "Educação",
+      "Saúde"
+    ],
+    "id": "setor-principal-de-atuacao",
+    "htmlFor": "setor-principal-de-atuacao"
+  },
+  {
+    "label": "Setor Secundário de Atuação",
+    "options": [
+      "Agroalimentar",
+      "Recursos Florestais",
+      "Recursos Minerais",
+      "TI e Automação",
+      "Comércio",
+      "Serviços",
+      "Indústria Geral",
+      "Educação",
+      "Saúde"
+    ],
+    "id": "setor-secundario-de-atuacao",
+    "htmlFor": "setor-secundario-de-atuacao"
+  },
+  {
+    "label": "Descrição das atividades",
+    "name": "descricao-atividades",
+    "rows": "5",
+    "id": "descricao-das-atividades",
+    "htmlFor": "descricao-das-atividades"
+  },
+  {
+    "label": "Porte",
+    "options": [
+      "Micro",
+      "Pequena",
+      "Média",
+      "Grande",
+      "Startup",
+      "Sem Fins Lucrativos"
+    ],
+    "id": "porte",
+    "htmlFor": "porte"
+  },
+  { "label": "CEP", "type": "text", "id": "cep", "htmlFor": "cep" },
+  {
+    "label": "Endereço",
+    "type": "text",
+    "id": "endereco",
+    "htmlFor": "endereco"
+  },
+  { "label": "Número", "type": "text", "id": "numero", "htmlFor": "numero" },
+  { "label": "Bairro", "type": "text", "id": "bairro", "htmlFor": "bairro" },
+  { "label": "Cidade", "type": "text", "id": "cidade", "htmlFor": "cidade" },
+  {
+    "label": "UF",
+    "options": [
+      "AC",
+      "AL",
+      "AP",
+      "AM",
+      "BA",
+      "CE",
+      "DF",
+      "ES",
+      "GO",
+      "MA",
+      "MT",
+      "MS",
+      "MG",
+      "PA",
+      "PB",
+      "PR",
+      "PE",
+      "PI",
+      "RJ",
+      "RN",
+      "RS",
+      "RO",
+      "RR",
+      "SC",
+      "SP",
+      "SE",
+      "TO"
+    ],
+    "id": "uf",
+    "htmlFor": "uf"
+  },
+  {
+    "label": "Complemento",
+    "type": "text",
+    "id": "complemento",
+    "htmlFor": "complemento"
+  },
+  {
+    "label": "Telefone Principal",
+    "type": "text",
+    "id": "telefone-principal",
+    "htmlFor": "telefone-principal"
+  },
+  {
+    "label": "Email Principal",
+    "type": "email",
+    "id": "email-principal",
+    "htmlFor": "email-principal"
+  },
+  {
+    "label": "Ano Fundação",
+    "type": "text",
+    "id": "ano-fundacao",
+    "htmlFor": "ano-fundacao"
+  },
+  { "label": "Website", "type": "text", "id": "website", "htmlFor": "website" },
+  {
+    "label": "Redes Sociais",
+    "type": "text",
+    "id": "redes-sociais",
+    "htmlFor": "redes-sociais"
+  },
+  {
+    "label": "Telefone Contato Principal",
+    "type": "text",
+    "id": "telefone-contato-principal",
+    "htmlFor": "telefone-contato-principal"
+  },
+  {
+    "label": "Nome Contato Principal",
+    "type": "text",
+    "id": "nome-contato-principal",
+    "htmlFor": "nome-contato-principal"
+  },
+  {
+    "label": "Cargo Contato Principal",
+    "type": "text",
+    "id": "cargo-contato-principal",
+    "htmlFor": "cargo-contato-principal"
+  },
+  {
+    "label": "E-mail Contato Principal",
+    "type": "email",
+    "id": "email-contato-principal",
+    "htmlFor": "email-contato-principal"
+  },
+  {
+    "label": "Status da Empresa",
+    "options": ["Ativo", "Inativo", "Prospect"],
+    "id": "status-da-empresa",
+    "htmlFor": "status-da-empresa"
+  },
+  {
+    "label": "Origem do cadastro",
+    "type": "text",
+    "id": "origem-do-cadastro",
+    "htmlFor": "origem-do-cadastro"
+  },
+  {
+    "label": "Observações Gerais",
+    "name": "observacoes-gerais",
+    "rows": "5",
+    "id": "observacoes-gerais",
+    "htmlFor": "observacoes-gerais"
+  }
+]

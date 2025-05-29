@@ -5,11 +5,15 @@
   justify-content: center;
   flex-direction: column;
   height: calc(100% - 83px);
+  padding: 2rem;
 }
 
 .containerFormInter .containerBtn {
-  align-self: flex-end;
+  width: 100%;
+  display: flex;
   padding: 2rem;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 .formInterStages {
@@ -26,10 +30,7 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-}
-
-.formInterStages .stagesChild:nth-child(1) {
-  background: var(--cool-green-10);
+  padding: 0.2rem;
 }
 
 .form {
@@ -38,9 +39,9 @@
   flex-direction: column;
   gap: 2rem;
   background: var(--cool-gray-20);
-  height: 100%;
   border-radius: 1.6rem;
   border-top-right-radius: 0;
+  padding: 4rem;
 }
 
 .form .formInputs {

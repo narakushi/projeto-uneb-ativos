@@ -1,0 +1,12 @@
+.containerReq {
+  padding: 2rem;
+}
+
+.containerReq > div {
+  flex-direction: column;
+  line-height: 1.5;
+}
+
+.containerReq p {
+  font-size: 2rem;
+}
