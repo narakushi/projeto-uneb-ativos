@@ -19,35 +19,15 @@
   },
   {
     "label": "Tipo de organização",
-    "options": [
-      "Empresa demandante",
-      "Empresa ofertante",
-      "Startup",
-      "ICT (UNEB, IF BAIANO, FATEC, etc)",
-      "Governo Municipal",
-      "Governo Estadual",
-      "Governo Federal",
-      "Ambiente de Inovação (Espaço Colaborar, Incubadora, Aceleradora)",
-      "Entidade de Apoio (Sebrae, SENAI, Associações)",
-      "Investidor",
-      "Mentor"
-    ],
+    "options": [],
+    "optionsValues": [],
     "id": "tipo-de-organizacao",
     "htmlFor": "tipo-de-organizacao"
   },
   {
     "label": "Setor Principal de Atuação",
-    "options": [
-      "Agroalimentar",
-      "Recursos Florestais",
-      "Recursos Minerais",
-      "TI e Automação",
-      "Comércio",
-      "Serviços",
-      "Indústria Geral",
-      "Educação",
-      "Saúde"
-    ],
+    "options": [],
+    "optionsValues": [],
     "id": "setor-principal-de-atuacao",
     "htmlFor": "setor-principal-de-atuacao"
   },
