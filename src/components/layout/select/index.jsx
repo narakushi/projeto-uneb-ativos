@@ -7,10 +7,13 @@ export const Select = ({ label, name, options, htmlFor, id, setValue }) => {
         {label}
       </label>
       <select name={name} id={id} className={styles.select} onChange={setValue}>
-        {options.map((option) => (
-          <option value={option.id || option} key={option.nome || option}>
-            {option.nome || option}
-          </option>
+        {options.map((option, index) => (
+          <>
+            {index == 0 && <option value="">Selecione uma opção</option>}
+            <option value={option.id || option} key={option.nome || option}>
+              {option.nome || option}
+            </option>
+          </>
         ))}
       </select>
     </div>

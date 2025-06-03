@@ -29,7 +29,7 @@ export default function RegisterOrg({ tipoOrg, tipoSetor }) {
   if (!route) return <>...Carregando</>;
 
   const changeKey = (array) => {
-    const newArray = array.map((tipo) => {
+    const newArray = array.map((tipo, index) => {
       const novo = {};
       const key = Object.keys(tipo);
 
@@ -44,11 +44,12 @@ export default function RegisterOrg({ tipoOrg, tipoSetor }) {
 
   const newTipoOrg = changeKey(tipoOrg);
   const newTipoSetor = changeKey(tipoSetor);
+  console.log(newTipoOrg);
 
   inputs.map((input) => {
-    if (input.id === "tipo-de-organizacao") {
+    if (input.id === "Tipo_Ator") {
       input.options = newTipoOrg;
-    } else if (input.id === "setor-principal-de-atuacao") {
+    } else if (input.id === "Setor_Principal_Atuacao") {
       input.options = newTipoSetor;
     } else {
       input;

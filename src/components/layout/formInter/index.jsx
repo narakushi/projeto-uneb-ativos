@@ -6,6 +6,20 @@ import styles from "./index.module.css";
 import { Button } from "../button";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import axios from "axios";
+
+async function enviarDados(e, dados, url) {
+  console.log(dados);
+  e.preventDefault();
+  try {
+    const response = await axios.post(url, dados);
+    console.log("Resposta da API: ", response.data);
+    return response.data;
+  } catch (error) {
+    console.log("Erro ao enviar dados: ", dados);
+    console.log(error);
+  }
+}
 
 export const FormInter = ({ inputs, urlBtn, type }) => {
   const pathname = usePathname();
@@ -98,7 +112,13 @@ export const FormInter = ({ inputs, urlBtn, type }) => {
             ></Button>
           )}
 
-          <Button text="Continuar" url={urlBtn} customClass="btnColor" />
+          <Button
+            text="Continuar"
+            event={(e) =>
+              enviarDados(e, valueInput, process.env.NEXT_PUBLIC_ATORES)
+            }
+            customClass="btnColor"
+          />
         </div>
       </form>
     </div>
