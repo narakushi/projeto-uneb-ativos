@@ -5,9 +5,21 @@ import { TextArea } from "../textarea";
 import styles from "./index.module.css";
 import { Button } from "../button";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export const FormInter = ({ inputs, urlBtn, type }) => {
   const pathname = usePathname();
+  const [valueInput, setValueInput] = useState(() => {
+    const inicial = {};
+
+    inputs.map((input) => {
+      inicial[input.name] = "";
+    });
+
+    return inicial;
+  });
+
+  console.log(valueInput);
 
   const stageLabel =
     type === "demanda"
@@ -40,11 +52,37 @@ export const FormInter = ({ inputs, urlBtn, type }) => {
           {inputs.map((input) => (
             <div key={input.label}>
               {input.type ? (
-                <Input {...input} />
+                <Input
+                  {...input}
+                  value={valueInput[input.name] || ""}
+                  setValue={(e) =>
+                    setValueInput({
+                      ...valueInput,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                />
               ) : input.rows ? (
-                <TextArea {...input} />
+                <TextArea
+                  {...input}
+                  value={valueInput[input.name] || ""}
+                  setValue={(e) =>
+                    setValueInput({
+                      ...valueInput,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                />
               ) : (
-                <Select {...input} />
+                <Select
+                  {...input}
+                  setValue={(e) =>
+                    setValueInput({
+                      ...valueInput,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                />
               )}
             </div>
           ))}

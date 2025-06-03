@@ -5,6 +5,7 @@ import inputs from "@/../public/jsons/inputsOrg.json";
 import { Title } from "@/components/layout/title";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export async function getStaticProps() {
   const [tipoOrg, tipoSetor] = await Promise.all([
@@ -23,25 +24,32 @@ export async function getStaticProps() {
 export default function RegisterOrg({ tipoOrg, tipoSetor }) {
   const router = useRouter();
   const { route } = router.query;
+  const [values, setValues] = useState([]);
 
   if (!route) return <>...Carregando</>;
 
-  //separando em um array os nomes
-  const tipos = tipoOrg.map((tipo) => tipo.Nome_Tipo_Ator);
-  const tiposSetor = tipoSetor.map((tipo) => tipo.Nome_Setor);
+  const changeKey = (array) => {
+    const newArray = array.map((tipo) => {
+      const novo = {};
+      const key = Object.keys(tipo);
 
-  //separando os ids
-  const idTipos = tipoOrg.map((tipo) => tipo.ID_Tipo_Ator);
-  const idTipoSetor = tipoSetor.map((tipo) => tipo.ID_Setor);
+      novo["id"] = tipo[key[0]];
+      novo["nome"] = tipo[key[1]];
 
-  //passando os dados vindos das tabelas auxiliares para o json do frontend
+      return novo;
+    });
+
+    return newArray;
+  };
+
+  const newTipoOrg = changeKey(tipoOrg);
+  const newTipoSetor = changeKey(tipoSetor);
+
   inputs.map((input) => {
     if (input.id === "tipo-de-organizacao") {
-      input.options = tipos;
-      input.optionsValues = idTipos;
+      input.options = newTipoOrg;
     } else if (input.id === "setor-principal-de-atuacao") {
-      input.options = tiposSetor;
-      input.optionsValues = idTipoSetor;
+      input.options = newTipoSetor;
     } else {
       input;
     }
@@ -53,7 +61,12 @@ export default function RegisterOrg({ tipoOrg, tipoSetor }) {
         <Title text="Cadastro da organização" />
         <p>Abaixo informe os dados da organização que deseja cadastrar</p>
         {route == "/requesting" && (
-          <FormInter inputs={inputs} urlBtn={route} type="demanda" />
+          <FormInter
+            inputs={inputs}
+            urlBtn={route}
+            type="demanda"
+            setValues={setValues}
+          />
         )}
         {route == "/solution" && (
           <FormInter inputs={inputs} urlBtn={route} type="solucao" />

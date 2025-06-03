@@ -1,22 +1,15 @@
 import styles from "./index.module.css";
 
-export const Select = ({
-  label,
-  name,
-  options,
-  optionsValues,
-  htmlFor,
-  id,
-}) => {
+export const Select = ({ label, name, options, htmlFor, id, setValue }) => {
   return (
     <div className={styles.containerSelect}>
       <label htmlFor={htmlFor} className={styles.label}>
         {label}
       </label>
-      <select name={name} id={id} className={styles.select}>
+      <select name={name} id={id} className={styles.select} onChange={setValue}>
         {options.map((option) => (
-          <option value={optionsValues || option} key={option}>
-            {option}
+          <option value={option.id || option} key={option.nome || option}>
+            {option.nome || option}
           </option>
         ))}
       </select>

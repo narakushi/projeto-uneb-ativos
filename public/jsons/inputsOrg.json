@@ -1,35 +1,38 @@
 [
   {
-    "label": "Razão Social",
+    "label": "Nome Oficial",
     "type": "text",
     "id": "razao-social",
-    "htmlFor": "razao-social"
+    "htmlFor": "razao-social",
+    "name": "razao-social"
   },
   {
     "label": "Nome Fantasia",
     "type": "text",
     "id": "nome-fantasia",
-    "htmlFor": "nome-fantasia"
+    "htmlFor": "nome-fantasia",
+    "name": "nome-fantasia"
   },
   {
     "label": "CNPJ/CPF",
     "type": "text",
     "id": "cnpj-cpf",
-    "htmlFor": "cnpj-cpf"
+    "htmlFor": "cnpj-cpf",
+    "name": "cnpj-cpf"
   },
   {
     "label": "Tipo de organização",
     "options": [],
-    "optionsValues": [],
     "id": "tipo-de-organizacao",
-    "htmlFor": "tipo-de-organizacao"
+    "htmlFor": "tipo-de-organizacao",
+    "name": "tipo-de-organizacao"
   },
   {
     "label": "Setor Principal de Atuação",
     "options": [],
-    "optionsValues": [],
     "id": "setor-principal-de-atuacao",
-    "htmlFor": "setor-principal-de-atuacao"
+    "htmlFor": "setor-principal-de-atuacao",
+    "name": "setor-principal-de-atuacao"
   },
   {
     "label": "Setor Secundário de Atuação",
@@ -45,11 +48,12 @@
       "Saúde"
     ],
     "id": "setor-secundario-de-atuacao",
-    "htmlFor": "setor-secundario-de-atuacao"
+    "htmlFor": "setor-secundario-de-atuacao",
+    "name": "setor-secundario-de-atuacao"
   },
   {
     "label": "Descrição das atividades",
-    "name": "descricao-atividades",
+    "name": "descricao-das-atividades",
     "rows": "5",
     "id": "descricao-das-atividades",
     "htmlFor": "descricao-das-atividades"
@@ -65,18 +69,44 @@
       "Sem Fins Lucrativos"
     ],
     "id": "porte",
-    "htmlFor": "porte"
+    "htmlFor": "porte",
+    "name": "porte"
   },
-  { "label": "CEP", "type": "text", "id": "cep", "htmlFor": "cep" },
+  {
+    "label": "CEP",
+    "type": "text",
+    "id": "cep",
+    "htmlFor": "cep",
+    "name": "cep"
+  },
   {
     "label": "Endereço",
     "type": "text",
     "id": "endereco",
-    "htmlFor": "endereco"
+    "htmlFor": "endereco",
+    "name": "endereco"
   },
-  { "label": "Número", "type": "text", "id": "numero", "htmlFor": "numero" },
-  { "label": "Bairro", "type": "text", "id": "bairro", "htmlFor": "bairro" },
-  { "label": "Cidade", "type": "text", "id": "cidade", "htmlFor": "cidade" },
+  {
+    "label": "Número",
+    "type": "text",
+    "id": "numero",
+    "htmlFor": "numero",
+    "name": "numero"
+  },
+  {
+    "label": "Bairro",
+    "type": "text",
+    "id": "bairro",
+    "htmlFor": "bairro",
+    "name": "bairro"
+  },
+  {
+    "label": "Cidade",
+    "type": "text",
+    "id": "cidade",
+    "htmlFor": "cidade",
+    "name": "cidade"
+  },
   {
     "label": "UF",
     "options": [
@@ -109,74 +139,92 @@
       "TO"
     ],
     "id": "uf",
-    "htmlFor": "uf"
+    "htmlFor": "uf",
+    "name": "uf"
   },
   {
     "label": "Complemento",
     "type": "text",
     "id": "complemento",
-    "htmlFor": "complemento"
+    "htmlFor": "complemento",
+    "name": "complemento"
   },
   {
     "label": "Telefone Principal",
     "type": "text",
     "id": "telefone-principal",
-    "htmlFor": "telefone-principal"
+    "htmlFor": "telefone-principal",
+    "name": "telefone-principal"
   },
   {
     "label": "Email Principal",
     "type": "email",
     "id": "email-principal",
-    "htmlFor": "email-principal"
+    "htmlFor": "email-principal",
+    "name": "email-principal"
   },
   {
     "label": "Ano Fundação",
     "type": "text",
     "id": "ano-fundacao",
-    "htmlFor": "ano-fundacao"
+    "htmlFor": "ano-fundacao",
+    "name": "ano-fundacao"
   },
-  { "label": "Website", "type": "text", "id": "website", "htmlFor": "website" },
+  {
+    "label": "Website",
+    "type": "text",
+    "id": "website",
+    "htmlFor": "website",
+    "name": "website"
+  },
   {
     "label": "Redes Sociais",
     "type": "text",
     "id": "redes-sociais",
-    "htmlFor": "redes-sociais"
+    "htmlFor": "redes-sociais",
+    "name": "redes-sociais"
   },
   {
     "label": "Telefone Contato Principal",
     "type": "text",
     "id": "telefone-contato-principal",
-    "htmlFor": "telefone-contato-principal"
+    "htmlFor": "telefone-contato-principal",
+    "name": "telefone-contato-principal"
   },
   {
     "label": "Nome Contato Principal",
     "type": "text",
     "id": "nome-contato-principal",
-    "htmlFor": "nome-contato-principal"
+    "htmlFor": "nome-contato-principal",
+    "name": "nome-contato-principal"
   },
   {
     "label": "Cargo Contato Principal",
     "type": "text",
     "id": "cargo-contato-principal",
-    "htmlFor": "cargo-contato-principal"
+    "htmlFor": "cargo-contato-principal",
+    "name": "cargo-contato-principal"
   },
   {
     "label": "E-mail Contato Principal",
     "type": "email",
     "id": "email-contato-principal",
-    "htmlFor": "email-contato-principal"
+    "htmlFor": "email-contato-principal",
+    "name": "email-contato-principal"
   },
   {
     "label": "Status da Empresa",
     "options": ["Ativo", "Inativo", "Prospect"],
     "id": "status-da-empresa",
-    "htmlFor": "status-da-empresa"
+    "htmlFor": "status-da-empresa",
+    "name": "status-da-empresa"
   },
   {
     "label": "Origem do cadastro",
     "type": "text",
     "id": "origem-do-cadastro",
-    "htmlFor": "origem-do-cadastro"
+    "htmlFor": "origem-do-cadastro",
+    "name": "origem-do-cadastro"
   },
   {
     "label": "Observações Gerais",
