@@ -4,6 +4,7 @@ import styles from "./index.module.css";
 import inputs from "@/../public/jsons/inputsOrg.json";
 import { Title } from "@/components/layout/title";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export async function getStaticProps() {
   const [tipoOrg, tipoSetor] = await Promise.all([
@@ -20,6 +21,11 @@ export async function getStaticProps() {
 }
 
 export default function RegisterOrg({ tipoOrg, tipoSetor }) {
+  const router = useRouter();
+  const { route } = router.query;
+
+  if (!route) return <>...Carregando</>;
+
   //separando em um array os nomes
   const tipos = tipoOrg.map((tipo) => tipo.Nome_Tipo_Ator);
   const tiposSetor = tipoSetor.map((tipo) => tipo.Nome_Setor);
@@ -44,9 +50,14 @@ export default function RegisterOrg({ tipoOrg, tipoSetor }) {
   return (
     <div className={styles.containerRegisterOrg}>
       <Container>
-        <Title text="Cadastro da organização"></Title>
+        <Title text="Cadastro da organização" />
         <p>Abaixo informe os dados da organização que deseja cadastrar</p>
-        <FormInter inputs={inputs} urlBtn="/requesting" />
+        {route == "/requesting" && (
+          <FormInter inputs={inputs} urlBtn={route} type="demanda" />
+        )}
+        {route == "/solution" && (
+          <FormInter inputs={inputs} urlBtn={route} type="solucao" />
+        )}
       </Container>
     </div>
   );

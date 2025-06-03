@@ -6,24 +6,32 @@ import styles from "./index.module.css";
 import { Button } from "../button";
 import { usePathname } from "next/navigation";
 
-export const FormInter = ({ inputs, urlBtn }) => {
+export const FormInter = ({ inputs, urlBtn, type }) => {
   const pathname = usePathname();
+
+  const stageLabel =
+    type === "demanda"
+      ? "Necessidades e desafios tecnológicos"
+      : type === "solucao"
+      ? "Solução ou serviço ofertado"
+      : "Etapa";
+
   return (
     <div className={styles.containerFormInter}>
       <div className={styles.formInterStages}>
         <span className={styles.stagesChild}>
           <FaCheckCircle
             size={15}
-            color={`${pathname === "/requesting" ? "#697077" : "#00A624"}`}
+            color={`${pathname == "/registerOrg" ? "#00A624" : "#697077"}`}
           />
           Dados da organização
         </span>
         <span className={styles.stagesChild}>
           <FaCheckCircle
             size={15}
-            color={`${pathname === "/requesting" ? "#00A624" : "#697077"}`}
+            color={`${pathname != "/registerOrg" ? "#00A624" : "#697077"}`}
           />
-          Necessidades e desafios tenológicos
+          {stageLabel}
         </span>
       </div>
 
@@ -42,11 +50,15 @@ export const FormInter = ({ inputs, urlBtn }) => {
           ))}
         </div>
         <div className={styles.containerBtn}>
-          <Button
-            text="Voltar"
-            url="/registerOrg"
-            customClass="btnColor"
-          ></Button>
+          {!pathname.includes("/registerOrg") && (
+            <Button
+              text="Voltar"
+              url={
+                type === "demanda" ? "/registerOrg?route=%2Frequesting" : "/"
+              }
+              customClass="btnColor"
+            ></Button>
+          )}
 
           <Button text="Continuar" url={urlBtn} customClass="btnColor" />
         </div>

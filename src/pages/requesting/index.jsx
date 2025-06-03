@@ -10,7 +10,7 @@ export default function Requesting() {
       <Container>
         <Title text="Cadastro da necessidade ou desafio tecnologico" />
         <p>Abaixo informe os dados da necessidade ou desafio tecnologico</p>
-        <FormInter inputs={inputs} urlBtn="/requestList" />
+        <FormInter inputs={inputs} urlBtn="/requestList" type="demanda" />
       </Container>
     </div>
   );

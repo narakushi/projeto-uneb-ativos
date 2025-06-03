@@ -1,0 +1,18 @@
+.containerChoice {
+  height: calc(100% - 83px);
+}
+
+.containerChoice > div {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 4rem;
+}
+
+.containerBtnChoice {
+  width: 50rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
