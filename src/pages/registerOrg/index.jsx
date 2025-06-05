@@ -44,7 +44,6 @@ export default function RegisterOrg({ tipoOrg, tipoSetor }) {
 
   const newTipoOrg = changeKey(tipoOrg);
   const newTipoSetor = changeKey(tipoSetor);
-  console.log(newTipoOrg);
 
   inputs.map((input) => {
     if (input.id === "Tipo_Ator") {

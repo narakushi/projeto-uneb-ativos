@@ -5,35 +5,55 @@ import { TextArea } from "../textarea";
 import styles from "./index.module.css";
 import { Button } from "../button";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-
-async function enviarDados(e, dados, url) {
-  console.log(dados);
-  e.preventDefault();
-  try {
-    const response = await axios.post(url, dados);
-    console.log("Resposta da API: ", response.data);
-    return response.data;
-  } catch (error) {
-    console.log("Erro ao enviar dados: ", dados);
-    console.log(error);
-  }
-}
+import { useRouter } from "next/router";
+import { FormContext } from "@/context/FormContext";
 
 export const FormInter = ({ inputs, urlBtn, type }) => {
+  const router = useRouter();
   const pathname = usePathname();
-  const [valueInput, setValueInput] = useState(() => {
-    const inicial = {};
+  const [valueGet, setValueGet] = useState({});
 
-    inputs.map((input) => {
-      inicial[input.name] = "";
-    });
+  const { formData, setFormData } = useContext(FormContext);
+  const { idForm, setIdForm } = useContext(FormContext);
 
-    return inicial;
-  });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  console.log(valueInput);
+  console.log(formData);
+  console.log(idForm);
+
+  const navigate = (rota) => {
+    router.push(rota);
+  };
+
+  async function putData(e, url, route) {
+    e.preventDefault();
+    try {
+      const response = await axios.put(`${url}/${idForm}`, formData);
+      console.log(response.data);
+      navigate(route);
+      return response.data;
+      // navigate(rota);
+    } catch (error) {
+      console.log("Erro ao recuperar dados: ", error);
+    }
+  }
+
+  async function postData(e, dados, url, rota) {
+    e.preventDefault();
+    try {
+      const response = await axios.post(url, dados);
+      setIdForm(response.data.insertId);
+      console.log("Resposta da API: ", response.data);
+      navigate(rota);
+    } catch (error) {
+      console.log("Erro ao enviar dados: ", dados);
+      console.log(error);
+    }
+  }
 
   const stageLabel =
     type === "demanda"
@@ -68,34 +88,20 @@ export const FormInter = ({ inputs, urlBtn, type }) => {
               {input.type ? (
                 <Input
                   {...input}
-                  value={valueInput[input.name] || ""}
-                  setValue={(e) =>
-                    setValueInput({
-                      ...valueInput,
-                      [e.target.name]: e.target.value,
-                    })
-                  }
+                  value={formData[input.name] || ""}
+                  setValue={handleChange}
                 />
               ) : input.rows ? (
                 <TextArea
                   {...input}
-                  value={valueInput[input.name] || ""}
-                  setValue={(e) =>
-                    setValueInput({
-                      ...valueInput,
-                      [e.target.name]: e.target.value,
-                    })
-                  }
+                  value={formData[input.name] || ""}
+                  setValue={handleChange}
                 />
               ) : (
                 <Select
                   {...input}
-                  setValue={(e) =>
-                    setValueInput({
-                      ...valueInput,
-                      [e.target.name]: e.target.value,
-                    })
-                  }
+                  value={formData[input.name] || ""}
+                  setValue={handleChange}
                 />
               )}
             </div>
@@ -105,17 +111,24 @@ export const FormInter = ({ inputs, urlBtn, type }) => {
           {!pathname.includes("/registerOrg") && (
             <Button
               text="Voltar"
-              url={
-                type === "demanda" ? "/registerOrg?route=%2Frequesting" : "/"
-              }
+              url="/registerOrg?route=%2Frequesting"
               customClass="btnColor"
             ></Button>
           )}
 
           <Button
             text="Continuar"
-            event={(e) =>
-              enviarDados(e, valueInput, process.env.NEXT_PUBLIC_ATORES)
+            event={
+              idForm
+                ? (e) =>
+                    putData(e, process.env.NEXT_PUBLIC_ATORES, "/requesting")
+                : (e) =>
+                    postData(
+                      e,
+                      formData,
+                      process.env.NEXT_PUBLIC_ATORES,
+                      "/requesting"
+                    )
             }
             customClass="btnColor"
           />
