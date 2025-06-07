@@ -9,6 +9,7 @@
   text-decoration: none;
   color: var(--blue-color);
   transition: all 0.3s ease-in;
+  cursor: pointer;
 }
 
 .btnStyle span {
@@ -25,4 +26,16 @@
 
 .btnStyle:hover {
   scale: 1.02;
+}
+
+.btnBlock {
+  background: var(--gray-color);
+  border: none;
+  color: var(--white-color);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btnBlock:hover {
+  scale: none;
 }

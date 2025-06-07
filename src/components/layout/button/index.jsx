@@ -4,7 +4,7 @@ import styles from "./index.module.css";
 export const Button = ({ text, url, customClass, icon, event }) => {
   return !event ? (
     <Link
-      className={`${styles.btnStyle} ${styles[customClass]}`}
+      className={`${styles.btnStyle} ${styles[customClass]} `}
       href={url}
       role="button"
     >

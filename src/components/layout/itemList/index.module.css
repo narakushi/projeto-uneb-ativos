@@ -1,11 +1,12 @@
 .containerItem {
   width: 100%;
   background: var(--cool-gray-35);
-  padding: 1rem;
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
 }
 
 .containerItem p {
@@ -24,4 +25,8 @@
   display: flex;
   justify-content: flex-end;
   gap: 2rem;
+}
+
+.containerItem:hover {
+  scale: 1.01;
 }

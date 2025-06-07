@@ -3,18 +3,16 @@ import { Container } from "@/components/layout/container";
 import { Title } from "@/components/layout/title";
 import styles from "./index.module.css";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { FormContext } from "@/context/FormContext";
 
 export default function ChoiceType() {
   const router = useRouter();
 
+  const { formRouter, setFormRouter } = useContext(FormContext);
   const navigate = (route) => {
-    router.push({
-      pathname: "/registerOrg",
-      query: {
-        route,
-      },
-    });
+    router.push("/registerOrg");
+    setFormRouter(route);
   };
 
   return (

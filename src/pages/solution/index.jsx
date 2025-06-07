@@ -1,7 +1,9 @@
+import { FormInter } from "@/components/layout/formInter";
+
 export default function Solution() {
   return (
-    <div>
-      <p>Solucao</p>
-    </div>
+    <>
+      <FormInter />
+    </>
   );
 }

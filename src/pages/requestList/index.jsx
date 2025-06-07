@@ -4,8 +4,20 @@ import { Container } from "@/components/layout/container";
 import { Button } from "@/components/layout/button";
 import { FaPlus } from "react-icons/fa";
 import { Title } from "@/components/layout/title";
+import axios from "axios";
 
-export default function RequestList() {
+export async function getStaticProps() {
+  const response = await axios.get(process.env.NEXT_PUBLIC_NECESSIDADE);
+
+  return {
+    props: {
+      requestings: response.data,
+    },
+  };
+}
+
+export default function RequestList({ requestings }) {
+  console.log(requestings);
   const items = [
     {
       title: "Sistema para gerenciamento do estacionamento",
@@ -24,10 +36,18 @@ export default function RequestList() {
         <p className={styles.subtitle}>
           Abaixo são listadas as demandas da sua organização.
         </p>
-        <div className={styles.containerList}>
-          {items.map((item) => (
-            <ItemList {...item} />
-          ))}
+        <div className={styles.containerAllList}>
+          <div className={styles.containerList}>
+            {requestings.map((requesting) => (
+              <ItemList
+                title={requesting.Titulo_Necessidade_Desafio}
+                titleDescription="Descrição detalhada da necessidade"
+                description={requesting.Descricao_Detalhada_Necessidade}
+                titleSection="Resultados Esperados"
+                sectionTitle={requesting.Resultados_Esperados}
+              />
+            ))}
+          </div>
           <Button
             icon={<FaPlus />}
             text="Adicionar demanda"

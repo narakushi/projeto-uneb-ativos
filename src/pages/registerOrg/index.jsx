@@ -4,8 +4,9 @@ import styles from "./index.module.css";
 import inputs from "@/../public/jsons/inputsOrg.json";
 import { Title } from "@/components/layout/title";
 import axios from "axios";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useEffect } from "react";
+import { FormContext } from "@/context/FormContext";
+import { changeKey } from "@/utils/changeKey";
 
 export async function getStaticProps() {
   const [tipoOrg, tipoSetor] = await Promise.all([
@@ -22,25 +23,8 @@ export async function getStaticProps() {
 }
 
 export default function RegisterOrg({ tipoOrg, tipoSetor }) {
-  const router = useRouter();
-  const { route } = router.query;
-  const [values, setValues] = useState([]);
-
-  if (!route) return <>...Carregando</>;
-
-  const changeKey = (array) => {
-    const newArray = array.map((tipo, index) => {
-      const novo = {};
-      const key = Object.keys(tipo);
-
-      novo["id"] = tipo[key[0]];
-      novo["nome"] = tipo[key[1]];
-
-      return novo;
-    });
-
-    return newArray;
-  };
+  const { formRouter, setFormRouter } = useContext(FormContext);
+  const { formUrlsEnv } = useContext(FormContext);
 
   const newTipoOrg = changeKey(tipoOrg);
   const newTipoSetor = changeKey(tipoSetor);
@@ -60,17 +44,13 @@ export default function RegisterOrg({ tipoOrg, tipoSetor }) {
       <Container>
         <Title text="Cadastro da organização" />
         <p>Abaixo informe os dados da organização que deseja cadastrar</p>
-        {route == "/requesting" && (
-          <FormInter
-            inputs={inputs}
-            urlBtn={route}
-            type="demanda"
-            setValues={setValues}
-          />
-        )}
-        {route == "/solution" && (
-          <FormInter inputs={inputs} urlBtn={route} type="solucao" />
-        )}
+
+        <FormInter
+          inputs={inputs}
+          url={formUrlsEnv.urlAtores}
+          urlBtn={formRouter}
+          setUrlBtn={setFormRouter}
+        />
       </Container>
     </div>
   );

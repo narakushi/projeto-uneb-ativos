@@ -5,62 +5,54 @@ import { TextArea } from "../textarea";
 import styles from "./index.module.css";
 import { Button } from "../button";
 import { usePathname } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { FormContext } from "@/context/FormContext";
+import { axiosPost } from "@/services/axiosPost";
+import { axiosPut } from "@/services/axiosPut";
+import { FormInputs } from "../formInputs";
 
-export const FormInter = ({ inputs, urlBtn, type }) => {
+export const FormInter = ({ inputs, url, urlBtn }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const [valueGet, setValueGet] = useState({});
-
-  const { formData, setFormData } = useContext(FormContext);
+  const { formStepOne, setFormStepOne } = useContext(FormContext);
+  const { formStepTwo, setFormStepTwo } = useContext(FormContext);
   const { idForm, setIdForm } = useContext(FormContext);
+  const { back, setBack } = useContext(FormContext);
 
-  const handleChange = (e) => {
+  const stageLabel =
+    urlBtn === "/requesting"
+      ? "Necessidades e desafios tecnológicos"
+      : urlBtn === "/solution"
+      ? "Solução ou serviço ofertado"
+      : "Etapa";
+
+  const handleChange = (e, formData, setFormData) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  console.log(formData);
-  console.log(idForm);
+  console.log(formStepOne);
+  console.log(formStepTwo);
 
-  const navigate = (rota) => {
-    router.push(rota);
+  const navigate = (route) => {
+    router.push(route);
   };
 
-  async function putData(e, url, route) {
+  console.log(idForm);
+
+  async function handleSubmit(e, data, url, route) {
     e.preventDefault();
-    try {
-      const response = await axios.put(`${url}/${idForm}`, formData);
-      console.log(response.data);
+    if (back) {
+      const response = await axiosPut(data, url);
+      console.log(response);
+    } else {
+      const response = await axiosPost(data, url);
+      setIdForm(response.insertId);
+      console.log(response);
       navigate(route);
-      return response.data;
-      // navigate(rota);
-    } catch (error) {
-      console.log("Erro ao recuperar dados: ", error);
     }
   }
-
-  async function postData(e, dados, url, rota) {
-    e.preventDefault();
-    try {
-      const response = await axios.post(url, dados);
-      setIdForm(response.data.insertId);
-      console.log("Resposta da API: ", response.data);
-      navigate(rota);
-    } catch (error) {
-      console.log("Erro ao enviar dados: ", dados);
-      console.log(error);
-    }
-  }
-
-  const stageLabel =
-    type === "demanda"
-      ? "Necessidades e desafios tecnológicos"
-      : type === "solucao"
-      ? "Solução ou serviço ofertado"
-      : "Etapa";
 
   return (
     <div className={styles.containerFormInter}>
@@ -82,54 +74,40 @@ export const FormInter = ({ inputs, urlBtn, type }) => {
       </div>
 
       <form action="" className={styles.form}>
-        <div className={styles.formInputs}>
-          {inputs.map((input) => (
-            <div key={input.label}>
-              {input.type ? (
-                <Input
-                  {...input}
-                  value={formData[input.name] || ""}
-                  setValue={handleChange}
-                />
-              ) : input.rows ? (
-                <TextArea
-                  {...input}
-                  value={formData[input.name] || ""}
-                  setValue={handleChange}
-                />
-              ) : (
-                <Select
-                  {...input}
-                  value={formData[input.name] || ""}
-                  setValue={handleChange}
-                />
-              )}
-            </div>
-          ))}
-        </div>
+        {pathname == "/registerOrg" && (
+          <FormInputs
+            inputs={inputs}
+            formData={formStepOne}
+            handleChange={(e) => handleChange(e, formStepOne, setFormStepOne)}
+          />
+        )}
+        {pathname == "/requesting" && (
+          <FormInputs
+            inputs={inputs}
+            formData={formStepTwo}
+            handleChange={(e) => handleChange(e, formStepTwo, setFormStepTwo)}
+          />
+        )}
         <div className={styles.containerBtn}>
-          {!pathname.includes("/registerOrg") && (
-            <Button
-              text="Voltar"
-              url="/registerOrg?route=%2Frequesting"
-              customClass="btnColor"
-            ></Button>
-          )}
-
+          <Button
+            text="Voltar"
+            event={(e) => {
+              e.preventDefault();
+              router.back();
+              setBack(true);
+            }}
+            customClass={pathname === "/registerOrg" ? "btnBlock" : "btnColor"}
+          ></Button>
           <Button
             text="Continuar"
-            event={
-              idForm
-                ? (e) =>
-                    putData(e, process.env.NEXT_PUBLIC_ATORES, "/requesting")
-                : (e) =>
-                    postData(
-                      e,
-                      formData,
-                      process.env.NEXT_PUBLIC_ATORES,
-                      "/requesting"
-                    )
-            }
+            event={(e) => {
+              if (pathname === "/registerOrg") {
+                handleSubmit(e, formStepOne, url, urlBtn);
+              } else if (pathname === "/requesting") {
+                setFormStepTwo({ ...formStepTwo, ID_Ator_Demandante: idForm });
+                handleSubmit(e, formStepTwo, url, "/requestList");
+              }
+            }}
             customClass="btnColor"
           />
         </div>

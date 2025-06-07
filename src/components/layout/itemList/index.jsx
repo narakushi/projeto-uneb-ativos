@@ -15,7 +15,7 @@ export const ItemList = ({
       <p>{title}</p>
 
       <div className={styles.contentItem}>
-        <strong>{titleDescription}:</strong>
+        <strong>{titleDescription}</strong>
         <span>{description}</span>
       </div>
 
@@ -26,13 +26,13 @@ export const ItemList = ({
 
       <div className={styles.containerBtn}>
         <Button
-          icon={<RiDeleteBin6Fill />}
+          icon={<MdEdit />}
           text="Editar"
           url="/"
           customClass="btnColor"
         />
         <Button
-          icon={<MdEdit />}
+          icon={<RiDeleteBin6Fill />}
           text="Excluir"
           url="/"
           customClass="btnColor"

@@ -2,69 +2,87 @@
   {
     "label": "Título da necessidade ou desafio",
     "type": "text",
-    "id": "form-req-titulo",
-    "htmlFor": "form-req-titulo"
+    "name": "Titulo_Necessidade_Desafio",
+    "id": "Titulo_Necessidade_Desafio",
+    "htmlFor": "Titulo_Necessidade_Desafio"
   },
   {
     "label": "Descrição detalhada da necessidade",
-    "name": "descricao",
+    "name": "Descricao_Detalhada_Necessidade",
     "rows": "5",
-    "id": "form-req-descricao",
-    "htmlFor": "form-req-descricao"
+    "id": "Descricao_Detalhada_Necessidade",
+    "htmlFor": "Descricao_Detalhada_Necessidade"
   },
   {
     "label": "Setor impactado internamente",
     "options": [],
-    "id": "form-req-setor",
-    "htmlFor": "form-req-setor"
+    "name": "Setor_Impactado_Internamente",
+    "id": "Setor_Impactado_Internamente",
+    "htmlFor": "Setor_Impactado_Internamente"
   },
   {
     "label": "Tipo da solução buscada",
     "options": [],
-    "id": "form-req-tipo-solucao",
-    "htmlFor": "form-req-tipo-solucao"
-  },
-  {
-    "label": "Outro tipo de solução",
-    "type": "text",
-    "id": "form-req-outro-solucao",
-    "htmlFor": "form-req-outro-solucao"
+    "name": "Tipo_Solucao_Buscada",
+    "id": "Tipo_Solucao_Buscada",
+    "htmlFor": "Tipo_Solucao_Buscada"
   },
   {
     "label": "Tecnologias desejadas",
-    "options": [],
-    "id": "form-req-tecnologias",
-    "htmlFor": "form-req-tecnologias"
+    "name": "Tecnologias_Desejadas",
+    "id": "Tecnologias_Desejadas",
+    "type": "text",
+    "htmlFor": "Tecnologias_Desejadas"
   },
   {
     "label": "Resultados esperados",
-    "name": "resultados",
+    "name": "Resultados_Esperados",
     "rows": "5",
-    "id": "form-req-resultados",
-    "htmlFor": "form-req-resultados"
+    "id": "Resultados_Esperados",
+    "htmlFor": "Resultados_Esperados"
   },
   {
     "label": "Urgência da necessidade",
-    "options": [],
-    "id": "form-req-urgencia",
-    "htmlFor": "form-req-urgencia"
+    "options": [
+      "Baixa (até 1 ano)",
+      "Média (até 6 meses)",
+      "Alta (até 3 meses)",
+      "Crítica (até 1 mês)"
+    ],
+    "name": "Urgencia_Necessidade",
+    "id": "Urgencia_Necessidade",
+    "htmlFor": "Urgencia_Necessidade"
   },
   {
     "label": "Palavras-chave da necessidade",
-    "options": [],
-    "id": "form-req-palavras-chave",
-    "htmlFor": "form-req-palavras-chave"
+    "type": "text",
+    "name": "Palavras_Chave_Necessidade",
+    "id": "Palavras_Chave_Necessidade",
+    "htmlFor": "Palavras_Chave_Necessidade"
   },
   {
     "label": "Disposição do Investimento",
-    "options": [],
-    "id": "form-req-investimento",
-    "htmlFor": "form-req-investimento"
+    "options": [
+      "Buscando Parceria",
+      "Orçamento Definido (faixa)",
+      "Aberto a Propostas",
+      "Buscando Fomento"
+    ],
+    "name": "Disposicao_Investimento",
+    "id": "Disposicao_Investimento",
+    "htmlFor": "Disposicao_Investimento"
   },
   {
     "label": "Status da Necessidade",
-    "options": [],
-    "id": "form-req-status",
-    "htmlFor": "form-req-status"
+    "options": [
+      "Aberta",
+      "Em Prospecção de Soluções",
+      "Solução em Desenvolvimento",
+      "Atendida",
+      "Cancelada"
+    ],
+    "name": "Status_Necessidade",
+    "id": "Status_Necessidade",
+    "htmlFor": "Status_Necessidade"
   }
 ]

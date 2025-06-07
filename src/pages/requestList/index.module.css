@@ -13,20 +13,34 @@
   flex-direction: column;
 }
 
+.containerAllList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.containerAllList > a {
+  margin: 2rem;
+  margin-top: 4rem;
+}
+
 .containerList {
   margin-top: 4rem;
   width: 100%;
   height: 48rem;
   display: flex;
   flex-direction: column;
-  background: var(--cool-gray-20);
   justify-content: space-between;
-  padding-bottom: 2rem;
+  background: var(--cool-gray-20);
+  gap: 0.2rem;
   border-radius: 0.8rem;
   position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .containerList > a {
   align-self: flex-end;
-  margin-right: 2rem;
+  margin: 2rem;
 }
