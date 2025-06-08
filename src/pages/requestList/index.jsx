@@ -5,29 +5,32 @@ import { Button } from "@/components/layout/button";
 import { FaPlus } from "react-icons/fa";
 import { Title } from "@/components/layout/title";
 import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { FormContext } from "@/context/FormContext";
 
-export async function getStaticProps() {
-  const response = await axios.get(process.env.NEXT_PUBLIC_NECESSIDADE);
+export default function RequestList() {
+  const [requestings, setRequestings] = useState([]);
+  const { idForm, setIdForm } = useContext(FormContext);
 
-  return {
-    props: {
-      requestings: response.data,
-    },
-  };
-}
+  useEffect(() => {
+    async function getRequestings() {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_NECESSIDADE}/${idForm}`
+        );
 
-export default function RequestList({ requestings }) {
-  console.log(requestings);
-  const items = [
-    {
-      title: "Sistema para gerenciamento do estacionamento",
-      titleDescription: "Descrição detalhada da necessidade",
-      description:
-        "Rhoncus morbi et augue nec, in id ullamcorper at sit. Condimentum sit nunc in...",
-      titleSection: "Setor impactado internamente",
-      sectionTitle: "Rhoncus morbi et augue nec",
-    },
-  ];
+        setRequestings(response.data);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getRequestings();
+  }, [idForm]);
+
+  console.log(idForm);
+  console.log(`${process.env.NEXT_PUBLIC_NECESSIDADE}/${idForm}`);
 
   return (
     <main className={styles.containerMainList}>

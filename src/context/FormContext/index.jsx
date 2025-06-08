@@ -10,7 +10,7 @@ export const FormProvider = ({ children }) => {
     urlAtores: process.env.NEXT_PUBLIC_ATORES,
     urlTipoAtores: process.env.NEXT_PUBLIC_TIPO_SETOR,
     urlTipoSetores: process.env.NEXT_PUBLIC_ATORES,
-    urlNecessidade: process.env.NEXT_PUBLIC_NECESSIDADE,
+    urlNecessidade: `${process.env.NEXT_PUBLIC_NECESSIDADE}`,
   };
   const [formRouter, setFormRouter] = useState("");
   const [back, setBack] = useState(false);
@@ -23,6 +23,17 @@ export const FormProvider = ({ children }) => {
       setFormRouter(JSON.parse(localStorage.getItem("urlChoice")));
     }
   }, [formRouter]);
+
+  useEffect(() => {
+    const storedId = JSON.parse(localStorage.getItem("idForm"));
+    setIdForm(storedId);
+  }, []);
+
+  useEffect(() => {
+    if (idForm) {
+      localStorage.setItem("idForm", JSON.stringify(idForm));
+    }
+  }, [idForm]);
 
   return (
     <FormContext.Provider

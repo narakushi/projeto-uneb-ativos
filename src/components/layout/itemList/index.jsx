@@ -2,6 +2,7 @@ import { Button } from "../button";
 import styles from "./index.module.css";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { MdEdit } from "react-icons/md";
+import { useRouter } from "next/router";
 
 export const ItemList = ({
   title,
@@ -10,6 +11,8 @@ export const ItemList = ({
   titleSection,
   sectionTitle,
 }) => {
+  const router = useRouter();
+
   return (
     <div className={styles.containerItem}>
       <p>{title}</p>
@@ -28,7 +31,7 @@ export const ItemList = ({
         <Button
           icon={<MdEdit />}
           text="Editar"
-          url="/"
+          url="/requestList/editItem"
           customClass="btnColor"
         />
         <Button

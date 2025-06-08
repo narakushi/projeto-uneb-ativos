@@ -1,12 +1,8 @@
 import { FaCheckCircle, FaCircle } from "react-icons/fa";
-import { Input } from "../input";
-import { Select } from "../select";
-import { TextArea } from "../textarea";
 import styles from "./index.module.css";
 import { Button } from "../button";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { FormContext } from "@/context/FormContext";
 import { axiosPost } from "@/services/axiosPost";
@@ -44,14 +40,17 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
   async function handleSubmit(e, data, url, route) {
     e.preventDefault();
     if (back) {
-      const response = await axiosPut(data, url);
+      const response = await axiosPut(data, url, idForm);
       console.log(response);
+      setBack(false);
     } else {
       const response = await axiosPost(data, url);
-      setIdForm(response.insertId);
+      if (data.Nome_Oficial) {
+        setIdForm(response.insertId);
+      }
       console.log(response);
-      navigate(route);
     }
+    navigate(route);
   }
 
   return (
@@ -104,8 +103,11 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
               if (pathname === "/registerOrg") {
                 handleSubmit(e, formStepOne, url, urlBtn);
               } else if (pathname === "/requesting") {
-                setFormStepTwo({ ...formStepTwo, ID_Ator_Demandante: idForm });
-                handleSubmit(e, formStepTwo, url, "/requestList");
+                const stepTwoWithId = {
+                  ...formStepTwo,
+                  ID_Ator_Demandante: idForm,
+                };
+                handleSubmit(e, stepTwoWithId, url, "/requestList");
               }
             }}
             customClass="btnColor"
