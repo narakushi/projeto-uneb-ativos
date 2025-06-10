@@ -5,12 +5,13 @@ export const FormContext = createContext();
 export const FormProvider = ({ children }) => {
   const [formStepOne, setFormStepOne] = useState({});
   const [formStepTwo, setFormStepTwo] = useState({});
+  const [formStepThree, setFormStepThree] = useState({});
   const [idForm, setIdForm] = useState(0);
   const formUrlsEnv = {
     urlAtores: process.env.NEXT_PUBLIC_ATORES,
     urlTipoAtores: process.env.NEXT_PUBLIC_TIPO_SETOR,
     urlTipoSetores: process.env.NEXT_PUBLIC_ATORES,
-    urlNecessidade: `${process.env.NEXT_PUBLIC_NECESSIDADE}`,
+    urlNecessidade: `${process.env.NEXT_PUBLIC_NECESSIDADE_ATOR}`,
   };
   const [formRouter, setFormRouter] = useState("");
   const [back, setBack] = useState(false);
@@ -42,6 +43,8 @@ export const FormProvider = ({ children }) => {
         setFormStepOne,
         formStepTwo,
         setFormStepTwo,
+        formStepThree,
+        setFormStepThree,
         idForm,
         setIdForm,
         formRouter,

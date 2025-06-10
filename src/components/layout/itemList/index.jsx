@@ -10,6 +10,8 @@ export const ItemList = ({
   description,
   titleSection,
   sectionTitle,
+  routerEdit,
+  routerDelete,
 }) => {
   const router = useRouter();
 
@@ -31,7 +33,7 @@ export const ItemList = ({
         <Button
           icon={<MdEdit />}
           text="Editar"
-          url="/requestList/editItem"
+          url={routerEdit}
           customClass="btnColor"
         />
         <Button

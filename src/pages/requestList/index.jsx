@@ -16,7 +16,7 @@ export default function RequestList() {
     async function getRequestings() {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_NECESSIDADE}/${idForm}`
+          `${process.env.NEXT_PUBLIC_NECESSIDADE_ATOR}/${idForm}`
         );
 
         setRequestings(response.data);
@@ -30,7 +30,7 @@ export default function RequestList() {
   }, [idForm]);
 
   console.log(idForm);
-  console.log(`${process.env.NEXT_PUBLIC_NECESSIDADE}/${idForm}`);
+  console.log(`${process.env.NEXT_PUBLIC_NECESSIDADE_ATOR}/${idForm}`);
 
   return (
     <main className={styles.containerMainList}>
@@ -48,6 +48,7 @@ export default function RequestList() {
                 description={requesting.Descricao_Detalhada_Necessidade}
                 titleSection="Resultados Esperados"
                 sectionTitle={requesting.Resultados_Esperados}
+                routerEdit="/requestList/editItem"
               />
             ))}
           </div>

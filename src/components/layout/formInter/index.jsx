@@ -14,11 +14,12 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
   const pathname = usePathname();
   const { formStepOne, setFormStepOne } = useContext(FormContext);
   const { formStepTwo, setFormStepTwo } = useContext(FormContext);
+  const { formStepThree, setFormStepThree } = useContext(FormContext);
   const { idForm, setIdForm } = useContext(FormContext);
   const { back, setBack } = useContext(FormContext);
 
   const stageLabel =
-    urlBtn === "/requesting"
+    urlBtn === "/requesting" || urlBtn === "/requestList/editItem"
       ? "Necessidades e desafios tecnológicos"
       : urlBtn === "/solution"
       ? "Solução ou serviço ofertado"
@@ -28,14 +29,9 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  console.log(formStepOne);
-  console.log(formStepTwo);
-
   const navigate = (route) => {
     router.push(route);
   };
-
-  console.log(idForm);
 
   async function handleSubmit(e, data, url, route) {
     e.preventDefault();
@@ -56,13 +52,15 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
   return (
     <div className={styles.containerFormInter}>
       <div className={styles.formInterStages}>
-        <span className={styles.stagesChild}>
-          <FaCheckCircle
-            size={15}
-            color={`${pathname == "/registerOrg" ? "#00A624" : "#697077"}`}
-          />
-          Dados da organização
-        </span>
+        {pathname === "/registerOrg" && (
+          <span className={styles.stagesChild}>
+            <FaCheckCircle
+              size={15}
+              color={`${pathname == "/registerOrg" ? "#00A624" : "#697077"}`}
+            />
+            Dados da organização
+          </span>
+        )}
         <span className={styles.stagesChild}>
           <FaCheckCircle
             size={15}
@@ -87,6 +85,15 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
             handleChange={(e) => handleChange(e, formStepTwo, setFormStepTwo)}
           />
         )}
+        {pathname == "/requestList/editItem" && (
+          <FormInputs
+            inputs={inputs}
+            formData={formStepThree}
+            handleChange={(e) =>
+              handleChange(e, formStepThree, setFormStepThree)
+            }
+          />
+        )}
         <div className={styles.containerBtn}>
           <Button
             text="Voltar"
@@ -96,7 +103,7 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
               setBack(true);
             }}
             customClass={pathname === "/registerOrg" ? "btnBlock" : "btnColor"}
-          ></Button>
+          />
           <Button
             text="Continuar"
             event={(e) => {
