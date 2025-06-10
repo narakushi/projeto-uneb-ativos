@@ -31,6 +31,8 @@ export default function EditItem({ solutionType, sectionType }) {
     idForm
   );
 
+  const { formUrlsEnv } = useContext(FormContext);
+
   const newSolutionType = changeKey(solutionType);
   const newSetorType = changeKey(sectionType);
 
@@ -66,7 +68,11 @@ export default function EditItem({ solutionType, sectionType }) {
       <Container customClass="collumnMode">
         <Title text="Editar item" />
         <p>Abaixo, edite os dados necessários</p>
-        <FormInter inputs={inputs} url="/" urlBtn="/requestList/editItem" />
+        <FormInter
+          inputs={inputs}
+          url={formUrlsEnv.urlNecessidadeOne}
+          urlBtn="/requestList/editItem"
+        />
       </Container>
     </main>
   );

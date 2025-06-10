@@ -8,6 +8,7 @@ import { FormContext } from "@/context/FormContext";
 import { axiosPost } from "@/services/axiosPost";
 import { axiosPut } from "@/services/axiosPut";
 import { FormInputs } from "../formInputs";
+import { getDataConvert } from "@/utils/getDataConvert";
 
 export const FormInter = ({ inputs, url, urlBtn }) => {
   const router = useRouter();
@@ -36,7 +37,7 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
   async function handleSubmit(e, data, url, route) {
     e.preventDefault();
     if (back) {
-      const response = await axiosPut(data, url, idForm);
+      const response = await axiosPut(data, url, route);
       console.log(response);
       setBack(false);
     } else {
@@ -48,6 +49,41 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
     }
     navigate(route);
   }
+
+  async function handleUpdate(e, data, url) {
+    e.preventDefault();
+    let newData = {};
+    if (data.Data_Registro_Necessidade) {
+      const date = getDataConvert();
+      newData = {
+        ...formStepThree,
+        Data_Registro_Necessidade: date,
+        Data_Ultima_Atualizacao_Status: date,
+      };
+    }
+    console.log(newData);
+    const response = await axiosPut(newData, url, data.ID_Necessidade);
+    console.log(response);
+    return response;
+  }
+
+  const handleBack = (e) => {
+    e.preventDefault();
+    router.back();
+    setBack(true);
+  };
+
+  const handleChoice = (e) => {
+    if (pathname === "/registerOrg") {
+      handleSubmit(e, formStepOne, url, urlBtn);
+    } else if (pathname === "/requesting") {
+      const stepTwoWithId = {
+        ...formStepTwo,
+        ID_Ator_Demandante: idForm,
+      };
+      handleSubmit(e, stepTwoWithId, url, "/requestList");
+    }
+  };
 
   return (
     <div className={styles.containerFormInter}>
@@ -94,32 +130,39 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
             }
           />
         )}
-        <div className={styles.containerBtn}>
-          <Button
-            text="Voltar"
-            event={(e) => {
-              e.preventDefault();
-              router.back();
-              setBack(true);
-            }}
-            customClass={pathname === "/registerOrg" ? "btnBlock" : "btnColor"}
-          />
-          <Button
-            text="Continuar"
-            event={(e) => {
-              if (pathname === "/registerOrg") {
-                handleSubmit(e, formStepOne, url, urlBtn);
-              } else if (pathname === "/requesting") {
-                const stepTwoWithId = {
-                  ...formStepTwo,
-                  ID_Ator_Demandante: idForm,
-                };
-                handleSubmit(e, stepTwoWithId, url, "/requestList");
+        {pathname === "/requestList/editItem" ? (
+          <div className={styles.containerBtn}>
+            <Button
+              text="Voltar"
+              event={handleBack}
+              customClass={
+                pathname === "/registerOrg" ? "btnBlock" : "btnColor"
               }
-            }}
-            customClass="btnColor"
-          />
-        </div>
+            />
+            <Button
+              text="Salvar"
+              event={(e) => {
+                handleUpdate(e, formStepThree, url, "/requestList");
+              }}
+              customClass="btnColor"
+            />
+          </div>
+        ) : (
+          <div className={styles.containerBtn}>
+            <Button
+              text="Voltar"
+              event={handleBack}
+              customClass={
+                pathname === "/registerOrg" ? "btnBlock" : "btnColor"
+              }
+            />
+            <Button
+              text="Continuar"
+              event={handleChoice}
+              customClass="btnColor"
+            />
+          </div>
+        )}
       </form>
     </div>
   );
