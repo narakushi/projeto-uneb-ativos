@@ -29,9 +29,6 @@ export default function RequestList() {
     getRequestings();
   }, [idForm]);
 
-  console.log(idForm);
-  console.log(`${process.env.NEXT_PUBLIC_NECESSIDADE_ATOR}/${idForm}`);
-
   return (
     <main className={styles.containerMainList}>
       <Container>
@@ -41,16 +38,23 @@ export default function RequestList() {
         </p>
         <div className={styles.containerAllList}>
           <div className={styles.containerList}>
-            {requestings.map((requesting) => (
-              <ItemList
-                title={requesting.Titulo_Necessidade_Desafio}
-                titleDescription="Descrição detalhada da necessidade"
-                description={requesting.Descricao_Detalhada_Necessidade}
-                titleSection="Resultados Esperados"
-                sectionTitle={requesting.Resultados_Esperados}
-                routerEdit="/requestList/editItem"
-              />
-            ))}
+            {requestings.length > 0 ? (
+              requestings.map((requesting) => (
+                <>
+                  <ItemList
+                    title={requesting.Titulo_Necessidade_Desafio}
+                    titleDescription="Descrição detalhada da necessidade"
+                    description={requesting.Descricao_Detalhada_Necessidade}
+                    titleSection="Resultados Esperados"
+                    sectionTitle={requesting.Resultados_Esperados}
+                    routerEdit="/requestList/editItem"
+                  />
+                  <span>{`${requestings.length} demanda(s) cadastrada(s) até agora.`}</span>
+                </>
+              ))
+            ) : (
+              <span>Sem demandas cadastradas!</span>
+            )}
           </div>
           <Button
             icon={<FaPlus />}

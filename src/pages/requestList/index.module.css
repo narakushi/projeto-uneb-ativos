@@ -38,6 +38,13 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
+.containerList > span {
+  padding: 1.6rem;
+  align-self: flex-end;
+  font-size: 1.4rem;
+  width: 22rem;
+  line-height: 1.5;
+}
 
 .containerList > a {
   align-self: flex-end;

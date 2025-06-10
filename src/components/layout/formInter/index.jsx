@@ -37,7 +37,7 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
   async function handleSubmit(e, data, url, route) {
     e.preventDefault();
     if (back) {
-      const response = await axiosPut(data, url, route);
+      const response = await axiosPut(data, url, idForm);
       console.log(response);
       setBack(false);
     } else {
