@@ -1,0 +1,45 @@
+.containerFormInter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100% - 83px);
+  padding: 2rem;
+}
+
+.formInterStages {
+  display: flex;
+  align-self: flex-end;
+  background: var(--cool-gray-35);
+  padding: 1.2rem;
+  border-top-left-radius: 1.6rem;
+  gap: 4rem;
+  font-size: 1.2rem;
+}
+
+.formInterStages .stagesChild {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.2rem;
+}
+
+.containerFormInter .containerBtn {
+  width: 100%;
+  display: flex;
+  padding: 2rem;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: var(--cool-gray-20);
+  border-radius: 1.6rem;
+  border-top-right-radius: 0;
+  padding: 4rem;
+}

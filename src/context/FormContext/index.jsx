@@ -17,6 +17,7 @@ export const FormProvider = ({ children }) => {
 
   const [formRouter, setFormRouter] = useState("");
   const [back, setBack] = useState(false);
+  const [idEditState, setIdEditState] = useState(-1);
 
   useEffect(() => {
     if (formRouter) {
@@ -30,13 +31,25 @@ export const FormProvider = ({ children }) => {
   useEffect(() => {
     const storedId = JSON.parse(localStorage.getItem("idForm"));
     setIdForm(storedId);
+
+    const storeIdNecessidade = JSON.parse(
+      localStorage.getItem("idFormNecessidade")
+    );
+    setIdEditState(storeIdNecessidade);
   }, []);
 
   useEffect(() => {
     if (idForm) {
       localStorage.setItem("idForm", JSON.stringify(idForm));
     }
-  }, [idForm]);
+
+    if (idEditState) {
+      localStorage.setItem(
+        "idFormidFormNecessidade",
+        JSON.stringify(idEditState)
+      );
+    }
+  }, [idForm, idEditState]);
 
   return (
     <FormContext.Provider
@@ -54,6 +67,8 @@ export const FormProvider = ({ children }) => {
         formUrlsEnv,
         back,
         setBack,
+        idEditState,
+        setIdEditState,
       }}
     >
       {children}

@@ -69,7 +69,7 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
 
   const handleBack = (e) => {
     e.preventDefault();
-    router.back();
+    router.replace("/requestList");
     setBack(true);
   };
 
@@ -88,15 +88,16 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
   return (
     <div className={styles.containerFormInter}>
       <div className={styles.formInterStages}>
-        {pathname === "/registerOrg" && (
+        {(pathname === "/registerOrg" || pathname === "/requesting") && (
           <span className={styles.stagesChild}>
             <FaCheckCircle
               size={15}
               color={`${pathname == "/registerOrg" ? "#00A624" : "#697077"}`}
             />
-            Dados da organização
+            Dados da Organização
           </span>
         )}
+
         <span className={styles.stagesChild}>
           <FaCheckCircle
             size={15}

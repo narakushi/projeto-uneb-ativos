@@ -32,7 +32,7 @@ export default function RequestList() {
   return (
     <main className={styles.containerMainList}>
       <Container>
-        <Title text="Necessidades e desafios tenológicos cadastrados" />
+        <Title text="Necessidades e desafios tecnológicos cadastrados" />
         <p className={styles.subtitle}>
           Abaixo são listadas as demandas da sua organização.
         </p>
@@ -40,26 +40,25 @@ export default function RequestList() {
           <div className={styles.containerList}>
             {requestings.length > 0 ? (
               requestings.map((requesting) => (
-                <>
-                  <ItemList
-                    title={requesting.Titulo_Necessidade_Desafio}
-                    titleDescription="Descrição detalhada da necessidade"
-                    description={requesting.Descricao_Detalhada_Necessidade}
-                    titleSection="Resultados Esperados"
-                    sectionTitle={requesting.Resultados_Esperados}
-                    routerEdit="/requestList/editItem"
-                  />
-                  <span>{`${requestings.length} demanda(s) cadastrada(s) até agora.`}</span>
-                </>
+                <ItemList
+                  title={requesting.Titulo_Necessidade_Desafio}
+                  titleDescription="Descrição detalhada da necessidade"
+                  description={requesting.Descricao_Detalhada_Necessidade}
+                  titleSection="Resultados Esperados"
+                  sectionTitle={requesting.Resultados_Esperados}
+                  routerEdit="/requestList/editItem"
+                  id={requesting.ID_Necessidade}
+                />
               ))
             ) : (
               <span>Sem demandas cadastradas!</span>
             )}
+            <span>{`${requestings.length} demanda(s) cadastrada(s) até agora.`}</span>
           </div>
           <Button
             icon={<FaPlus />}
             text="Adicionar demanda"
-            url="/"
+            url="/requestList/newRequesting"
             customClass="btnColor"
           />
         </div>

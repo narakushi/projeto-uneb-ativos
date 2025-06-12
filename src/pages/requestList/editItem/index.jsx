@@ -24,12 +24,15 @@ export async function getStaticProps() {
 
 export default function EditItem({ solutionType, sectionType }) {
   const { idForm } = useContext(FormContext);
-  const { formStepThree, setFormStepThree } = useContext(FormContext);
+  const { setFormStepThree } = useContext(FormContext);
+  const { idEditState } = useContext(FormContext);
 
   const { items: requestings, loading } = useGetOneAxios(
-    process.env.NEXT_PUBLIC_NECESSIDADE_ATOR,
-    idForm
+    process.env.NEXT_PUBLIC_NECESSIDADE,
+    idEditState
   );
+
+  console.log(idEditState);
 
   const { formUrlsEnv } = useContext(FormContext);
 
@@ -56,10 +59,9 @@ export default function EditItem({ solutionType, sectionType }) {
         newObj[key] = data[key];
       });
       setFormStepThree(newObj);
+      console.log(data);
     }
   }, [loading, requestings]);
-
-  console.log(formStepThree);
 
   if (loading) return <>Carregando...</>;
 

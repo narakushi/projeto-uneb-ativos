@@ -3,6 +3,9 @@ import styles from "./index.module.css";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { MdEdit } from "react-icons/md";
 import { useRouter } from "next/router";
+import { useContext, useState } from "react";
+import { FormContext } from "@/context/FormContext";
+import axios from "axios";
 
 export const ItemList = ({
   title,
@@ -11,9 +14,19 @@ export const ItemList = ({
   titleSection,
   sectionTitle,
   routerEdit,
-  routerDelete,
+  id,
 }) => {
   const router = useRouter();
+  const { setIdEditState } = useContext(FormContext);
+
+  async function handleDelete(e) {
+    if (confirm("Deseja deletar este item?")) {
+      const res = await axios.delete(
+        `${process.env.NEXT_PUBLIC_NECESSIDADE}/${id}`
+      );
+      console.log(res);
+    }
+  }
 
   return (
     <div className={styles.containerItem}>
@@ -33,13 +46,17 @@ export const ItemList = ({
         <Button
           icon={<MdEdit />}
           text="Editar"
-          url={routerEdit}
+          event={(e) => {
+            e.preventDefault();
+            router.replace(routerEdit);
+            setIdEditState(id);
+          }}
           customClass="btnColor"
         />
         <Button
           icon={<RiDeleteBin6Fill />}
           text="Excluir"
-          url="/"
+          event={handleDelete}
           customClass="btnColor"
         />
       </div>
