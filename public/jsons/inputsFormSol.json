@@ -1,0 +1,97 @@
+[
+  {
+    "label": "Título da solução ou serviço ofertado",
+    "type": "text",
+    "name": "Nome_Solucao_Servico",
+    "id": "Nome_Solucao_Servico",
+    "htmlFor": "Nome_Solucao_Servico"
+  },
+  {
+    "label": "Descrição detalhada da solução",
+    "name": "Descricao_Detalhada_Solucao",
+    "rows": "5",
+    "id": "Descricao_Detalhada_Solucao",
+    "htmlFor": "Descricao_Detalhada_Solucao"
+  },
+  {
+    "label": "Tipo de solução",
+    "options": [],
+    "name": "Tipo_Solucao",
+    "id": "Tipo_Solucao",
+    "htmlFor": "Tipo_Solucao"
+  },
+  {
+    "label": "Setores alvo da solução",
+    "options": [],
+    "name": "Setores_Alvo_Solucao",
+    "id": "Setores_Alvo_Solucao",
+    "htmlFor": "Setores_Alvo_Solucao"
+  },
+  {
+    "label": "Tecnologias Embarcadas",
+    "options": [
+      "Inteligência Artificial",
+      "IoT",
+      "Blockchain",
+      "Realidade Virtual/Aumentada",
+      "Big Data",
+      "Automação Industrial",
+      "Biotecnologia"
+    ],
+    "name": "Tecnologias_Embarcadas",
+    "id": "Tecnologias_Embarcadas",
+    "htmlFor": "Tecnologias_Embarcadas"
+  },
+  {
+    "label": "Nível de maturidade da solução",
+    "options": [
+      "Ideia/Conceito",
+      "Protótipo Funcional (MVP)",
+      "Produto Lançado",
+      "Em Escalação"
+    ],
+    "name": "Nivel_Maturidade_Solucao",
+    "id": "Nivel_Maturidade_Solucao",
+    "htmlFor": "Nivel_Maturidade_Solucao"
+  },
+  {
+    "label": "Diferenciais Competitivos",
+    "type": "text",
+    "name": "Diferenciais_Competitivos",
+    "id": "Diferenciais_Competitivos",
+    "htmlFor": "Diferenciais_Competitivos"
+  },
+  {
+    "label": "Modelo de comercialização",
+    "options": [
+      "Venda Única",
+      "Assinatura",
+      "Licenciamento",
+      "Consultoria por Hora/Projeto"
+    ],
+    "name": "Modelo_Comercializacao",
+    "id": "Modelo_Comercializacao",
+    "htmlFor": "Modelo_Comercializacao"
+  },
+  {
+    "label": "Website Solucao",
+    "type": "text",
+    "name": "Website_Solucao",
+    "id": "Website_Solucao",
+    "htmlFor": "Website_Solucao"
+  },
+  {
+    "label": "Palavras-chave da solução",
+    "type": "text",
+    "name": "Palavras_Chave_Solucao",
+    "id": "Palavras_Chave_Solucao",
+    "htmlFor": "Palavras_Chave_Solucao"
+  },
+  {
+    "label": "Cases de sucesso da aplicação",
+    "type": "text",
+    "name": "Cases_Sucesso_Aplicacao",
+    "id": "Cases_Sucesso_Aplicacao",
+    "htmlFor": "Cases_Sucesso_Aplicacao"
+  }
+]

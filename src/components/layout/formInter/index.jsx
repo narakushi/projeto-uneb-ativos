@@ -40,14 +40,15 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
       const response = await axiosPut(data, url, idForm);
       console.log(response);
       setBack(false);
+      navigate(route);
     } else {
       const response = await axiosPost(data, url);
       if (data.Nome_Oficial) {
         setIdForm(response.insertId);
       }
       console.log(response);
+      navigate(route);
     }
-    navigate(route);
   }
 
   async function handleUpdate(e, data, url) {
@@ -69,7 +70,7 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
 
   const handleBack = (e) => {
     e.preventDefault();
-    router.replace("/requestList");
+    router.back();
     setBack(true);
   };
 
@@ -82,13 +83,21 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
         ID_Ator_Demandante: idForm,
       };
       handleSubmit(e, stepTwoWithId, url, "/requestList");
+    } else if (pathname === "/solution") {
+      const stepTwoWithId = {
+        ...formStepTwo,
+        ID_Ator_Ofertante: idForm,
+      };
+      handleSubmit(e, stepTwoWithId, url, "/solutionList");
     }
   };
 
   return (
     <div className={styles.containerFormInter}>
       <div className={styles.formInterStages}>
-        {(pathname === "/registerOrg" || pathname === "/requesting") && (
+        {(pathname === "/registerOrg" ||
+          pathname === "/requesting" ||
+          pathname === "/solution") && (
           <span className={styles.stagesChild}>
             <FaCheckCircle
               size={15}
@@ -122,6 +131,13 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
             handleChange={(e) => handleChange(e, formStepTwo, setFormStepTwo)}
           />
         )}
+        {pathname == "/solution" && (
+          <FormInputs
+            inputs={inputs}
+            formData={formStepTwo}
+            handleChange={(e) => handleChange(e, formStepTwo, setFormStepTwo)}
+          />
+        )}
         {pathname == "/requestList/editItem" && (
           <FormInputs
             inputs={inputs}
@@ -135,7 +151,10 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
           <div className={styles.containerBtn}>
             <Button
               text="Voltar"
-              event={handleBack}
+              event={(e) => {
+                e.preventDefault();
+                router.replace("/requestList");
+              }}
               customClass={
                 pathname === "/registerOrg" ? "btnBlock" : "btnColor"
               }
