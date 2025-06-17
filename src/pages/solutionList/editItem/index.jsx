@@ -13,6 +13,7 @@ import { FormInputs } from "@/components/layout/formInputs";
 import { Button } from "@/components/layout/button";
 import { useRouter } from "next/router";
 import { axiosPut } from "@/services/axiosPut";
+import { Alert } from "@/components/layout/alert";
 
 export async function getStaticProps() {
   const [solutionType, sectionType] = await Promise.all([
@@ -32,6 +33,7 @@ export default function EditItem({ solutionType, sectionType }) {
   const { idForm } = useContext(FormContext);
   const [formData, setFormData] = useState({});
   const { idEditState } = useContext(FormContext);
+  const [alert, setAlert] = useState(false);
 
   const { items, loading } = useGetOneAxios(
     process.env.NEXT_PUBLIC_SOLUCAO,
@@ -103,6 +105,9 @@ export default function EditItem({ solutionType, sectionType }) {
       idEditState
     );
     console.log(response);
+    if (response.affectedRows) {
+      setAlert(true);
+    }
   }
 
   if (loading) return <>Carregando...</>;
@@ -112,6 +117,7 @@ export default function EditItem({ solutionType, sectionType }) {
       <Container customClass="collumnMode">
         <Title text="Editar item" />
         <p>Abaixo, edite os dados necessários</p>
+
         <div className={styles.containerFormInter}>
           <div className={styles.formInterStages}>
             <span className={styles.stagesChild}>
@@ -125,6 +131,7 @@ export default function EditItem({ solutionType, sectionType }) {
               formData={formData}
               handleChange={(e) => handleChange(e, formData, setFormData)}
             />
+            {alert && <Alert text="Solução editada com sucesso!" />}
             <div className={styles.containerBtn}>
               <Button
                 text="Voltar"

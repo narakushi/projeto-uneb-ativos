@@ -1,0 +1,8 @@
+.alert {
+  width: 100%;
+  background: #aaff6d92;
+  font-size: 1.6rem;
+  padding: 1.2rem;
+  margin: 1rem 0;
+  text-align: center;
+}

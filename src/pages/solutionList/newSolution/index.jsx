@@ -10,6 +10,7 @@ import axios from "axios";
 import { axiosPost } from "@/services/axiosPost";
 import { FormContext } from "@/context/FormContext";
 import { useRouter } from "next/router";
+import { Alert } from "@/components/layout/alert";
 
 export async function getStaticProps() {
   const [setorType, solutionType] = await Promise.all([
@@ -29,6 +30,7 @@ export default function NewSolution({ setorType, solutionType }) {
   const [formData, setFormData] = useState({});
   const { idForm } = useContext(FormContext);
   const router = useRouter();
+  const [alert, setAlert] = useState(false);
 
   const handleChange = (e, formData, setFormData) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -55,6 +57,9 @@ export default function NewSolution({ setorType, solutionType }) {
       process.env.NEXT_PUBLIC_SOLUCAO_ATOR
     );
     console.log(response);
+    if (response.insertId) {
+      setAlert(true);
+    }
   }
 
   return (
@@ -72,6 +77,7 @@ export default function NewSolution({ setorType, solutionType }) {
             formData={formData}
             handleChange={(e) => handleChange(e, formData, setFormData)}
           />
+          {alert && <Alert text="Solução adicionada com sucesso!" />}
           <div className={styles.containerBtn}>
             <Button
               text="Voltar"
