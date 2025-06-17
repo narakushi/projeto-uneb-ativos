@@ -14,6 +14,7 @@ export const ItemList = ({
   titleSection,
   sectionTitle,
   routerEdit,
+  routerDelete,
   id,
 }) => {
   const router = useRouter();
@@ -22,7 +23,7 @@ export const ItemList = ({
   async function handleDelete(e) {
     if (confirm("Deseja deletar este item?")) {
       const res = await axios.delete(
-        `${process.env.NEXT_PUBLIC_NECESSIDADE}/${id}`
+        `${process.env.NEXT_PUBLIC_SOLUCAO}/${id}`
       );
       console.log(res);
     }

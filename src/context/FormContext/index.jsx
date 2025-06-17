@@ -13,6 +13,8 @@ export const FormProvider = ({ children }) => {
     urlTipoSetores: process.env.NEXT_PUBLIC_ATORES,
     urlNecessidade: process.env.NEXT_PUBLIC_NECESSIDADE_ATOR,
     urlNecessidadeOne: process.env.NEXT_PUBLIC_NECESSIDADE,
+    urlSolucao: process.env.NEXT_PUBLIC_SOLUCAO_ATOR,
+    urlSolucaoOne: process.env.NEXT_PUBLIC_SOLUCAO,
   };
 
   const [formRouter, setFormRouter] = useState("");

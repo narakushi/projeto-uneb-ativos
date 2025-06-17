@@ -22,7 +22,7 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
   const stageLabel =
     urlBtn === "/requesting" || urlBtn === "/requestList/editItem"
       ? "Necessidades e desafios tecnológicos"
-      : urlBtn === "/solution"
+      : urlBtn === "/solution" || urlBtn === "/solutionList/editItem"
       ? "Solução ou serviço ofertado"
       : "Etapa";
 
@@ -139,6 +139,15 @@ export const FormInter = ({ inputs, url, urlBtn }) => {
           />
         )}
         {pathname == "/requestList/editItem" && (
+          <FormInputs
+            inputs={inputs}
+            formData={formStepThree}
+            handleChange={(e) =>
+              handleChange(e, formStepThree, setFormStepThree)
+            }
+          />
+        )}
+        {pathname == "/solutionList/editItem" && (
           <FormInputs
             inputs={inputs}
             formData={formStepThree}
