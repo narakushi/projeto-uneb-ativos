@@ -51,9 +51,9 @@ export default function RequestList() {
                 />
               ))
             ) : (
-              <span>Sem demandas cadastradas!</span>
+              <span>Sem soluções cadastradas!</span>
             )}
-            <span>{`${requestings.length} demanda(s) cadastrada(s) até agora.`}</span>
+            <span>{`${requestings.length} solução(ões) cadastrada(s) até agora.`}</span>
           </div>
           <Button
             icon={<FaPlus />}
